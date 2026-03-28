@@ -3,6 +3,7 @@ package com.justin.loginservice.controller;
 
 import com.justin.loginservice.entity.Login;
 import com.justin.loginservice.service.LoginService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +20,9 @@ public class LoginController {
     }
 
     @PostMapping
-    public Login createLogin(@RequestBody Login login){
-        return loginService.saveLogin(login);
+    public ResponseEntity<String> createLogin(@RequestBody Login login) {
+        loginService.saveLogin(login);
+        return ResponseEntity.ok("Registrado correctamente");
     }
 
     @GetMapping
